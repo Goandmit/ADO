@@ -1,0 +1,94 @@
+﻿<Window x:Class="ADO.PurchasesList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Список покупок"
+        Height="450"
+        Width="800"        
+        MaxHeight="450"
+        MaxWidth="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Создать"                              
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="20,0,0,0"
+                Grid.Row="0"              
+                Height="25"
+                Width="70"
+                Command="{Binding CreateCommand}"/>
+        <Button Content="Удалить"                               
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="100,0,0,0"
+                Grid.Row="0"
+                Height="25"
+                Width="70"
+                Command="{Binding DeleteCommand}"/>
+        <DataGrid AutoGenerateColumns="False"
+                  HorizontalGridLinesBrush="DarkGray"
+                  RowBackground="LightGray"
+                  AlternatingRowBackground="White"
+                  CanUserAddRows="False"
+                  Margin="20,10,20,20"
+                  Grid.Row="1"                  
+                  ItemsSource="{Binding Purchases, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedPurchase}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding OpenCommand}"
+                                           CommandParameter="{Binding SelectedPurchase}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"
+                                    Binding="{Binding Path=ID}" 
+                                    Width="10*"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Email"
+                                    Binding="{Binding Path=Email}"
+                                    Width="20*"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Код товара"
+                                    Binding="{Binding Path=ProductCode}"
+                                    Width="20*"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Наименование товара"
+                                    Binding="{Binding Path=ProductName}"
+                                    Width="50*"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

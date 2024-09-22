@@ -1,0 +1,45 @@
+﻿<Window x:Class="ADO.MenuForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Меню"
+        Height="225" Width="250"
+        MaxHeight="225" MaxWidth="250"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Подключения"                   
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Height="30"
+                Width="150"                    
+                Grid.Row="2"                                    
+                Command="{Binding ShowConnectionsCommand}"/>
+        <Button Content="Клиенты"                   
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Height="30"
+                Width="150"               
+                Grid.Row="4"                                
+                Command="{Binding ShowCustomersCommand}"/>
+        <Button Content="Покупки"                   
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Height="30"
+                Width="150"               
+                Grid.Row="6"                                
+                Command="{Binding ShowPurchasesCommand}"/>
+    </Grid>
+</Window>
